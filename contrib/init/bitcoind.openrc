@@ -1,0 +1,92 @@
+#!/sbin/runscript
+
+# backward compatibility for existing gentoo layout 
+#
+if [ -d "/var/lib/sucrecoin/.sucrecoin" ]; then
+	SUCRECOIND_DEFAULT_DATADIR="/var/lib/sucrecoin/.sucrecoin"
+else
+	SUCRECOIND_DEFAULT_DATADIR="/var/lib/sucrecoind"
+fi
+
+SUCRECOIND_CONFIGFILE=${SUCRECOIND_CONFIGFILE:-/etc/sucrecoin/sucrecoin.conf}
+SUCRECOIND_PIDDIR=${SUCRECOIND_PIDDIR:-/var/run/sucrecoind}
+SUCRECOIND_PIDFILE=${SUCRECOIND_PIDFILE:-${SUCRECOIND_PIDDIR}/sucrecoind.pid}
+SUCRECOIND_DATADIR=${SUCRECOIND_DATADIR:-${SUCRECOIND_DEFAULT_DATADIR}}
+SUCRECOIND_USER=${SUCRECOIND_USER:-${SUCRECOIN_USER:-sucrecoin}}
+SUCRECOIND_GROUP=${SUCRECOIND_GROUP:-sucrecoin}
+SUCRECOIND_BIN=${SUCRECOIND_BIN:-/usr/bin/sucrecoind}
+SUCRECOIND_NICE=${SUCRECOIND_NICE:-${NICELEVEL:-0}}
+SUCRECOIND_OPTS="${SUCRECOIND_OPTS:-${SUCRECOIN_OPTS}}"
+
+name="Sucrecoin Core Daemon"
+description="Sucrecoin cryptocurrency P2P network daemon"
+
+command="/usr/bin/sucrecoind"
+command_args="-pid=\"${SUCRECOIND_PIDFILE}\" \
+		-conf=\"${SUCRECOIND_CONFIGFILE}\" \
+		-datadir=\"${SUCRECOIND_DATADIR}\" \
+		-daemon \
+		${SUCRECOIND_OPTS}"
+
+required_files="${SUCRECOIND_CONFIGFILE}"
+start_stop_daemon_args="-u ${SUCRECOIND_USER} \
+			-N ${SUCRECOIND_NICE} -w 2000"
+pidfile="${SUCRECOIND_PIDFILE}"
+
+# The retry schedule to use when stopping the daemon. Could be either
+# a timeout in seconds or multiple signal/timeout pairs (like
+# "SIGKILL/180 SIGTERM/300")
+retry="${SUCRECOIND_SIGTERM_TIMEOUT}"
+
+depend() {
+	need localmount net
+}
+
+# verify
+# 1) that the datadir exists and is writable (or create it)
+# 2) that a directory for the pid exists and is writable
+# 3) ownership and permissions on the config file
+start_pre() {
+	checkpath \
+	-d \
+	--mode 0750 \
+	--owner "${SUCRECOIND_USER}:${SUCRECOIND_GROUP}" \
+	"${SUCRECOIND_DATADIR}"
+
+	checkpath \
+	-d \
+	--mode 0755 \
+	--owner "${SUCRECOIND_USER}:${SUCRECOIND_GROUP}" \
+	"${SUCRECOIND_PIDDIR}"
+
+	checkpath -f \
+	-o ${SUCRECOIND_USER}:${SUCRECOIND_GROUP} \
+	-m 0660 \
+	${SUCRECOIND_CONFIGFILE}
+
+	checkconfig || return 1
+}
+
+checkconfig()
+{
+	if ! grep -qs '^rpcpassword=' "${SUCRECOIND_CONFIGFILE}" ; then
+		eerror ""
+		eerror "ERROR: You must set a secure rpcpassword to run sucrecoind."
+		eerror "The setting must appear in ${SUCRECOIND_CONFIGFILE}"
+		eerror ""
+		eerror "This password is security critical to securing wallets "
+		eerror "and must not be the same as the rpcuser setting."
+		eerror "You can generate a suitable random password using the following "
+		eerror "command from the shell:"
+		eerror ""
+		eerror "bash -c 'tr -dc a-zA-Z0-9 < /dev/urandom | head -c32 && echo'"
+		eerror ""
+		eerror "It is recommended that you also set alertnotify so you are "
+		eerror "notified of problems:"
+		eerror ""
+		eerror "ie: alertnotify=echo %%s | mail -s \"Sucrecoin Alert\"" \
+			"admin@foo.com"
+		eerror ""
+		return 1
+	fi
+}

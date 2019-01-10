@@ -1,0 +1,78 @@
+# Copyright (c) 2013-2016 The Bitcoin Core developers
+# Copyright (c) 2017 The Sucrecoin Core developers
+# Distributed under the MIT software license, see the accompanying
+# file COPYING or http://www.opensource.org/licenses/mit-license.php.
+
+bin_PROGRAMS += qt/test/test_sucrecoin-qt
+TESTS += qt/test/test_sucrecoin-qt
+
+TEST_QT_MOC_CPP = \
+  qt/test/moc_compattests.cpp \
+  qt/test/moc_rpcnestedtests.cpp \
+  qt/test/moc_uritests.cpp
+
+if ENABLE_WALLET
+TEST_QT_MOC_CPP += \
+  qt/test/moc_paymentservertests.cpp \
+  qt/test/moc_wallettests.cpp
+endif
+
+TEST_QT_H = \
+  qt/test/compattests.h \
+  qt/test/rpcnestedtests.h \
+  qt/test/uritests.h \
+  qt/test/paymentrequestdata.h \
+  qt/test/paymentservertests.h \
+  qt/test/wallettests.h
+
+TEST_SUCRECOIN_CPP = \
+  test/test_sucrecoin.cpp
+
+TEST_SUCRECOIN_H = \
+  test/test_sucrecoin.h
+
+qt_test_test_sucrecoin_qt_CPPFLAGS = $(AM_CPPFLAGS) $(SUCRECOIN_INCLUDES) $(SUCRECOIN_QT_INCLUDES) \
+  $(QT_INCLUDES) $(QT_TEST_INCLUDES) $(PROTOBUF_CFLAGS)
+
+qt_test_test_sucrecoin_qt_SOURCES = \
+  qt/test/compattests.cpp \
+  qt/test/rpcnestedtests.cpp \
+  qt/test/test_main.cpp \
+  qt/test/uritests.cpp \
+  $(TEST_QT_H) \
+  $(TEST_SUCRECOIN_CPP) \
+  $(TEST_SUCRECOIN_H)
+if ENABLE_WALLET
+qt_test_test_sucrecoin_qt_SOURCES += \
+  qt/test/paymentservertests.cpp \
+  qt/test/wallettests.cpp \
+  wallet/test/wallet_test_fixture.cpp
+endif
+
+nodist_qt_test_test_sucrecoin_qt_SOURCES = $(TEST_QT_MOC_CPP)
+
+qt_test_test_sucrecoin_qt_LDADD = $(LIBSUCRECOINQT) $(LIBSUCRECOIN_SERVER)
+if ENABLE_WALLET
+qt_test_test_sucrecoin_qt_LDADD += $(LIBSUCRECOIN_WALLET)
+endif
+if ENABLE_ZMQ
+qt_test_test_sucrecoin_qt_LDADD += $(LIBSUCRECOIN_ZMQ) $(ZMQ_LIBS)
+endif
+qt_test_test_sucrecoin_qt_LDADD += $(LIBSUCRECOIN_CLI) $(LIBSUCRECOIN_COMMON) $(LIBSUCRECOIN_UTIL) $(LIBSUCRECOIN_CONSENSUS) $(LIBSUCRECOIN_CRYPTO) $(LIBUNIVALUE) $(LIBLEVELDB) \
+  $(LIBLEVELDB_SSE42) $(LIBMEMENV) $(BOOST_LIBS) $(QT_DBUS_LIBS) $(QT_TEST_LIBS) $(QT_LIBS) \
+  $(QR_LIBS) $(PROTOBUF_LIBS) $(BDB_LIBS) $(SSL_LIBS) $(CRYPTO_LIBS) $(MINIUPNPC_LIBS) $(LIBSECP256K1) \
+  $(EVENT_PTHREADS_LIBS) $(EVENT_LIBS)
+qt_test_test_sucrecoin_qt_LDFLAGS = $(RELDFLAGS) $(AM_LDFLAGS) $(QT_LDFLAGS) $(LIBTOOL_APP_LDFLAGS)
+qt_test_test_sucrecoin_qt_CXXFLAGS = $(AM_CXXFLAGS) $(QT_PIE_FLAGS)
+
+CLEAN_SUCRECOIN_QT_TEST = $(TEST_QT_MOC_CPP) qt/test/*.gcda qt/test/*.gcno
+
+CLEANFILES += $(CLEAN_SUCRECOIN_QT_TEST)
+
+test_sucrecoin_qt : qt/test/test_sucrecoin-qt$(EXEEXT)
+
+test_sucrecoin_qt_check : qt/test/test_sucrecoin-qt$(EXEEXT) FORCE
+	$(MAKE) check-TESTS TESTS=$^
+
+test_sucrecoin_qt_clean: FORCE
+	rm -f $(CLEAN_SUCRECOIN_QT_TEST) $(qt_test_test_sucrecoin_qt_OBJECTS)

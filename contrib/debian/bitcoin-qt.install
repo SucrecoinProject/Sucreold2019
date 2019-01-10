@@ -1,0 +1,6 @@
+usr/local/bin/sucrecoin-qt usr/bin
+share/pixmaps/sucrecoin32.xpm usr/share/pixmaps
+share/pixmaps/sucrecoin16.xpm usr/share/pixmaps
+share/pixmaps/sucrecoin128.png usr/share/pixmaps
+debian/sucrecoin-qt.desktop usr/share/applications
+debian/sucrecoin-qt.protocol usr/share/kde4/services/
