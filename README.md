@@ -1,4 +1,7 @@
-UPDATE 6/6/2019
+UPDATE 23/6/2019
+Fix time restart dificulted. 
+
+
 
 Sucrecoin Core integration/staging tree
 =====================================
