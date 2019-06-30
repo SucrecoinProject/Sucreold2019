@@ -1,0 +1,33 @@
+# /etc/conf.d/sucrecoind: config file for /etc/init.d/sucrecoind
+
+# Config file location
+#SUCRECOIND_CONFIGFILE="/etc/sucrecoin/sucrecoin.conf"
+
+# What directory to write pidfile to?  (created and owned by $SUCRECOIND_USER)
+#SUCRECOIND_PIDDIR="/var/run/sucrecoind"
+
+# What filename to give the pidfile
+#SUCRECOIND_PIDFILE="${SUCRECOIND_PIDDIR}/sucrecoind.pid"
+
+# Where to write sucrecoind data (be mindful that the blockchain is large)
+#SUCRECOIND_DATADIR="/var/lib/sucrecoind"
+
+# User and group to own sucrecoind process
+#SUCRECOIND_USER="sucrecoin"
+#SUCRECOIND_GROUP="sucrecoin"
+
+# Path to sucrecoind executable
+#SUCRECOIND_BIN="/usr/bin/sucrecoind"
+
+# Nice value to run sucrecoind under
+#SUCRECOIND_NICE=0
+
+# Additional options (avoid -conf and -datadir, use flags above)
+#SUCRECOIND_OPTS=""
+
+# The timeout in seconds OpenRC will wait for sucrecoind to terminate
+# after a SIGTERM has been raised.
+# Note that this will be mapped as argument to start-stop-daemon's
+# '--retry' option, which means you can specify a retry schedule
+# here. For more information see man 8 start-stop-daemon.
+SUCRECOIND_SIGTERM_TIMEOUT=60

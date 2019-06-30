@@ -1,0 +1,361 @@
+/****************************************************************************
+** Meta object code from reading C++ file 'sucrecoin.cpp'
+**
+**
+** WARNING! All changes made in this file will be lost!
+*****************************************************************************/
+
+#include <QtCore/qbytearray.h>
+#include <QtCore/qmetatype.h>
+#if !defined(Q_MOC_OUTPUT_REVISION)
+#error "The header file 'sucrecoin.cpp' doesn't include <QObject>."
+#elif Q_MOC_OUTPUT_REVISION != 67
+#error "This file was generated using the moc from 5.5.1. It"
+#error "cannot be used with the include files from this version of Qt."
+#error "(The moc has changed too much.)"
+#endif
+
+QT_BEGIN_MOC_NAMESPACE
+struct qt_meta_stringdata_SucrecoinCore_t {
+    QByteArrayData data[9];
+    char stringdata0[100];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_SucrecoinCore_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
+static const qt_meta_stringdata_SucrecoinCore_t qt_meta_stringdata_SucrecoinCore = {
+    {
+QT_MOC_LITERAL(0, 0, 13), // "SucrecoinCore"
+QT_MOC_LITERAL(1, 14, 16), // "initializeResult"
+QT_MOC_LITERAL(2, 31, 0), // ""
+QT_MOC_LITERAL(3, 32, 7), // "success"
+QT_MOC_LITERAL(4, 40, 14), // "shutdownResult"
+QT_MOC_LITERAL(5, 55, 16), // "runawayException"
+QT_MOC_LITERAL(6, 72, 7), // "message"
+QT_MOC_LITERAL(7, 80, 10), // "initialize"
+QT_MOC_LITERAL(8, 91, 8) // "shutdown"
+
+    },
+    "SucrecoinCore\0initializeResult\0\0success\0"
+    "shutdownResult\0runawayException\0message\0"
+    "initialize\0shutdown"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_SucrecoinCore[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       5,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       3,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags
+       1,    1,   39,    2, 0x06 /* Public */,
+       4,    0,   42,    2, 0x06 /* Public */,
+       5,    1,   43,    2, 0x06 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags
+       7,    0,   46,    2, 0x0a /* Public */,
+       8,    0,   47,    2, 0x0a /* Public */,
+
+ // signals: parameters
+    QMetaType::Void, QMetaType::Bool,    3,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,    6,
+
+ // slots: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+
+       0        // eod
+};
+
+void SucrecoinCore::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        SucrecoinCore *_t = static_cast<SucrecoinCore *>(_o);
+        Q_UNUSED(_t)
+        switch (_id) {
+        case 0: _t->initializeResult((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 1: _t->shutdownResult(); break;
+        case 2: _t->runawayException((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 3: _t->initialize(); break;
+        case 4: _t->shutdown(); break;
+        default: ;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
+        {
+            typedef void (SucrecoinCore::*_t)(bool );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinCore::initializeResult)) {
+                *result = 0;
+            }
+        }
+        {
+            typedef void (SucrecoinCore::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinCore::shutdownResult)) {
+                *result = 1;
+            }
+        }
+        {
+            typedef void (SucrecoinCore::*_t)(const QString & );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinCore::runawayException)) {
+                *result = 2;
+            }
+        }
+    }
+}
+
+const QMetaObject SucrecoinCore::staticMetaObject = {
+    { &QObject::staticMetaObject, qt_meta_stringdata_SucrecoinCore.data,
+      qt_meta_data_SucrecoinCore,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+};
+
+
+const QMetaObject *SucrecoinCore::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *SucrecoinCore::qt_metacast(const char *_clname)
+{
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_SucrecoinCore.stringdata0))
+        return static_cast<void*>(const_cast< SucrecoinCore*>(this));
+    return QObject::qt_metacast(_clname);
+}
+
+int SucrecoinCore::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QObject::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 5)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 5;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 5)
+            *reinterpret_cast<int*>(_a[0]) = -1;
+        _id -= 5;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void SucrecoinCore::initializeResult(bool _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 0, _a);
+}
+
+// SIGNAL 1
+void SucrecoinCore::shutdownResult()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+}
+
+// SIGNAL 2
+void SucrecoinCore::runawayException(const QString & _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 2, _a);
+}
+struct qt_meta_stringdata_SucrecoinApplication_t {
+    QByteArrayData data[13];
+    char stringdata0[173];
+};
+#define QT_MOC_LITERAL(idx, ofs, len) \
+    Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
+    qptrdiff(offsetof(qt_meta_stringdata_SucrecoinApplication_t, stringdata0) + ofs \
+        - idx * sizeof(QByteArrayData)) \
+    )
+static const qt_meta_stringdata_SucrecoinApplication_t qt_meta_stringdata_SucrecoinApplication = {
+    {
+QT_MOC_LITERAL(0, 0, 20), // "SucrecoinApplication"
+QT_MOC_LITERAL(1, 21, 19), // "requestedInitialize"
+QT_MOC_LITERAL(2, 41, 0), // ""
+QT_MOC_LITERAL(3, 42, 17), // "requestedShutdown"
+QT_MOC_LITERAL(4, 60, 10), // "stopThread"
+QT_MOC_LITERAL(5, 71, 14), // "splashFinished"
+QT_MOC_LITERAL(6, 86, 8), // "QWidget*"
+QT_MOC_LITERAL(7, 95, 6), // "window"
+QT_MOC_LITERAL(8, 102, 16), // "initializeResult"
+QT_MOC_LITERAL(9, 119, 7), // "success"
+QT_MOC_LITERAL(10, 127, 14), // "shutdownResult"
+QT_MOC_LITERAL(11, 142, 22), // "handleRunawayException"
+QT_MOC_LITERAL(12, 165, 7) // "message"
+
+    },
+    "SucrecoinApplication\0requestedInitialize\0"
+    "\0requestedShutdown\0stopThread\0"
+    "splashFinished\0QWidget*\0window\0"
+    "initializeResult\0success\0shutdownResult\0"
+    "handleRunawayException\0message"
+};
+#undef QT_MOC_LITERAL
+
+static const uint qt_meta_data_SucrecoinApplication[] = {
+
+ // content:
+       7,       // revision
+       0,       // classname
+       0,    0, // classinfo
+       7,   14, // methods
+       0,    0, // properties
+       0,    0, // enums/sets
+       0,    0, // constructors
+       0,       // flags
+       4,       // signalCount
+
+ // signals: name, argc, parameters, tag, flags
+       1,    0,   49,    2, 0x06 /* Public */,
+       3,    0,   50,    2, 0x06 /* Public */,
+       4,    0,   51,    2, 0x06 /* Public */,
+       5,    1,   52,    2, 0x06 /* Public */,
+
+ // slots: name, argc, parameters, tag, flags
+       8,    1,   55,    2, 0x0a /* Public */,
+      10,    0,   58,    2, 0x0a /* Public */,
+      11,    1,   59,    2, 0x0a /* Public */,
+
+ // signals: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void, 0x80000000 | 6,    7,
+
+ // slots: parameters
+    QMetaType::Void, QMetaType::Bool,    9,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   12,
+
+       0        // eod
+};
+
+void SucrecoinApplication::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, void **_a)
+{
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        SucrecoinApplication *_t = static_cast<SucrecoinApplication *>(_o);
+        Q_UNUSED(_t)
+        switch (_id) {
+        case 0: _t->requestedInitialize(); break;
+        case 1: _t->requestedShutdown(); break;
+        case 2: _t->stopThread(); break;
+        case 3: _t->splashFinished((*reinterpret_cast< QWidget*(*)>(_a[1]))); break;
+        case 4: _t->initializeResult((*reinterpret_cast< bool(*)>(_a[1]))); break;
+        case 5: _t->shutdownResult(); break;
+        case 6: _t->handleRunawayException((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        default: ;
+        }
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        switch (_id) {
+        default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+        case 3:
+            switch (*reinterpret_cast<int*>(_a[1])) {
+            default: *reinterpret_cast<int*>(_a[0]) = -1; break;
+            case 0:
+                *reinterpret_cast<int*>(_a[0]) = qRegisterMetaType< QWidget* >(); break;
+            }
+            break;
+        }
+    } else if (_c == QMetaObject::IndexOfMethod) {
+        int *result = reinterpret_cast<int *>(_a[0]);
+        void **func = reinterpret_cast<void **>(_a[1]);
+        {
+            typedef void (SucrecoinApplication::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinApplication::requestedInitialize)) {
+                *result = 0;
+            }
+        }
+        {
+            typedef void (SucrecoinApplication::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinApplication::requestedShutdown)) {
+                *result = 1;
+            }
+        }
+        {
+            typedef void (SucrecoinApplication::*_t)();
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinApplication::stopThread)) {
+                *result = 2;
+            }
+        }
+        {
+            typedef void (SucrecoinApplication::*_t)(QWidget * );
+            if (*reinterpret_cast<_t *>(func) == static_cast<_t>(&SucrecoinApplication::splashFinished)) {
+                *result = 3;
+            }
+        }
+    }
+}
+
+const QMetaObject SucrecoinApplication::staticMetaObject = {
+    { &QApplication::staticMetaObject, qt_meta_stringdata_SucrecoinApplication.data,
+      qt_meta_data_SucrecoinApplication,  qt_static_metacall, Q_NULLPTR, Q_NULLPTR}
+};
+
+
+const QMetaObject *SucrecoinApplication::metaObject() const
+{
+    return QObject::d_ptr->metaObject ? QObject::d_ptr->dynamicMetaObject() : &staticMetaObject;
+}
+
+void *SucrecoinApplication::qt_metacast(const char *_clname)
+{
+    if (!_clname) return Q_NULLPTR;
+    if (!strcmp(_clname, qt_meta_stringdata_SucrecoinApplication.stringdata0))
+        return static_cast<void*>(const_cast< SucrecoinApplication*>(this));
+    return QApplication::qt_metacast(_clname);
+}
+
+int SucrecoinApplication::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
+{
+    _id = QApplication::qt_metacall(_c, _id, _a);
+    if (_id < 0)
+        return _id;
+    if (_c == QMetaObject::InvokeMetaMethod) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
+        if (_id < 7)
+            qt_static_metacall(this, _c, _id, _a);
+        _id -= 7;
+    }
+    return _id;
+}
+
+// SIGNAL 0
+void SucrecoinApplication::requestedInitialize()
+{
+    QMetaObject::activate(this, &staticMetaObject, 0, Q_NULLPTR);
+}
+
+// SIGNAL 1
+void SucrecoinApplication::requestedShutdown()
+{
+    QMetaObject::activate(this, &staticMetaObject, 1, Q_NULLPTR);
+}
+
+// SIGNAL 2
+void SucrecoinApplication::stopThread()
+{
+    QMetaObject::activate(this, &staticMetaObject, 2, Q_NULLPTR);
+}
+
+// SIGNAL 3
+void SucrecoinApplication::splashFinished(QWidget * _t1)
+{
+    void *_a[] = { Q_NULLPTR, const_cast<void*>(reinterpret_cast<const void*>(&_t1)) };
+    QMetaObject::activate(this, &staticMetaObject, 3, _a);
+}
+QT_END_MOC_NAMESPACE

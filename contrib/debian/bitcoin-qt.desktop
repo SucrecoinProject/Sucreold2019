@@ -1,0 +1,13 @@
+[Desktop Entry]
+Encoding=UTF-8
+Name=Sucrecoin Core
+Comment=Connect to the Sucrecoin P2P Network
+Comment[de]=Verbinde mit dem Sucrecoin peer-to-peer Netzwerk
+Comment[fr]=Sucrecoin, monnaie virtuelle cryptographique pair à pair
+Comment[tr]=Sucrecoin, eşten eşe kriptografik sanal para birimi
+Exec=sucrecoin-qt %u
+Terminal=false
+Type=Application
+Icon=sucrecoin128
+MimeType=x-scheme-handler/sucrecoin;
+Categories=Office;Finance;

@@ -1,0 +1,22 @@
+[Unit]
+Description=Sucrecoin's distributed currency daemon
+After=network.target
+
+[Service]
+User=sucrecoin
+Group=sucrecoin
+
+Type=forking
+PIDFile=/var/lib/sucrecoind/sucrecoind.pid
+ExecStart=/usr/bin/sucrecoind -daemon -pid=/var/lib/sucrecoind/sucrecoind.pid \
+-conf=/etc/sucrecoin/sucrecoin.conf -datadir=/var/lib/sucrecoind -disablewallet
+
+Restart=always
+PrivateTmp=true
+TimeoutStopSec=60s
+TimeoutStartSec=2s
+StartLimitInterval=120s
+StartLimitBurst=5
+
+[Install]
+WantedBy=multi-user.target

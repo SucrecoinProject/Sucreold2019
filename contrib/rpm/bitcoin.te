@@ -1,0 +1,81 @@
+policy_module(sucrecoin, 1.100.1)
+
+########################################
+#
+# Declarations
+#
+
+type sucrecoin_t;
+type sucrecoin_exec_t;
+init_daemon_domain(sucrecoin_t, sucrecoin_exec_t)
+
+permissive sucrecoin_t;
+
+type sucrecoin_initrc_exec_t;
+init_script_file(sucrecoin_initrc_exec_t)
+
+type sucrecoin_conf_t;
+files_type(sucrecoin_conf_t)
+
+type sucrecoin_var_lib_t;
+files_type(sucrecoin_var_lib_t)
+
+type sucrecoin_var_run_t;
+files_type(sucrecoin_var_run_t)
+
+type sucrecoin_port_t;
+corenet_port(sucrecoin_port_t)
+
+########################################
+#
+# sucrecoin local policy
+#
+allow sucrecoin_t self:process { fork };
+
+allow sucrecoin_t self:fifo_file rw_fifo_file_perms;
+allow sucrecoin_t self:unix_stream_socket create_stream_socket_perms;
+
+manage_dirs_pattern(sucrecoin_t, sucrecoin_conf_t, sucrecoin_conf_t)
+manage_files_pattern(sucrecoin_t, sucrecoin_conf_t, sucrecoin_conf_t)
+
+manage_dirs_pattern(sucrecoin_t, sucrecoin_var_lib_t, sucrecoin_var_lib_t)
+manage_files_pattern(sucrecoin_t, sucrecoin_var_lib_t, sucrecoin_var_lib_t)
+files_var_lib_filetrans(sucrecoin_t, sucrecoin_var_lib_t, { dir file })
+
+manage_dirs_pattern(sucrecoin_t, sucrecoin_var_run_t, sucrecoin_var_run_t)
+manage_files_pattern(sucrecoin_t, sucrecoin_var_run_t, sucrecoin_var_run_t)
+
+sysnet_dns_name_resolve(sucrecoin_t)
+corenet_all_recvfrom_unlabeled(sucrecoin_t)
+
+allow sucrecoin_t self:tcp_socket create_stream_socket_perms;
+corenet_tcp_sendrecv_generic_if(sucrecoin_t)
+corenet_tcp_sendrecv_generic_node(sucrecoin_t)
+corenet_tcp_sendrecv_all_ports(sucrecoin_t)
+corenet_tcp_bind_generic_node(sucrecoin_t)
+
+gen_require(`
+    type sucrecoin_port_t;
+')
+allow sucrecoin_t sucrecoin_port_t:tcp_socket name_bind;
+
+gen_require(`
+    type sucrecoin_port_t;
+')
+allow sucrecoin_t sucrecoin_port_t:tcp_socket name_connect;
+
+domain_use_interactive_fds(sucrecoin_t)
+
+files_read_etc_files(sucrecoin_t)
+
+miscfiles_read_localization(sucrecoin_t)
+
+sysnet_dns_name_resolve(sucrecoin_t)
+
+allow sucrecoin_t sucrecoin_exec_t:file execute_no_trans;
+allow sucrecoin_t self:process setsched;
+corecmd_exec_ls(sucrecoin_t)
+corenet_tcp_connect_http_port(sucrecoin_t)
+dev_read_urand(sucrecoin_t)
+fs_getattr_xattr_fs(sucrecoin_t)
+kernel_read_system_state(sucrecoin_t)

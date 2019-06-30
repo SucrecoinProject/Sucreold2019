@@ -1,0 +1,4 @@
+qt/qt_libsucrecoinqt_a-qrc_sucrecoin_locale.o: \
+ qt/qrc_sucrecoin_locale.cpp /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:

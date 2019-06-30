@@ -1,0 +1,4 @@
+crypto/libsucrecoinconsensus_la-sph_hamsi_helper.lo: \
+ crypto/sph_hamsi_helper.c /usr/include/stdc-predef.h
+
+/usr/include/stdc-predef.h:
