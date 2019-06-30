@@ -1,5 +1,12 @@
+UPDATE 1/07/2019
+Fix dificulted. 
+Instalacion de DarkGravity 
+Preparacion para implementacion de Assets
+
+
 UPDATE 23/6/2019
 Fix time restart dificulted. 
+
 
 
 
